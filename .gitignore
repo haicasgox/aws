@@ -1,0 +1,7 @@
+./.awscredentials
+./.git
+./.ssh
+./.terraform
+./.visualstudiocode_files
+./.vscode
+
