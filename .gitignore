@@ -4,4 +4,5 @@
 ./.terraform
 ./.visualstudiocode_files
 ./.vscode
-
+*.tfstate
+*.tfstate.backup
