@@ -1,1 +1,1 @@
-# TerraForm
+# TerraForm for AWS platform
