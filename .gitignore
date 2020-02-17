@@ -6,3 +6,4 @@
 ./.vscode
 *.tfstate
 *.tfstate.backup
+./.gitattributes
