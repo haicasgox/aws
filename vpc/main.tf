@@ -35,6 +35,10 @@ resource "aws_route_table" "public_route" {
 // Create a private route table
 resource "aws_default_route_table" "private_route" {
   default_route_table_id = "${aws_vpc.main.default_route_table_id}"
+  route {
+    nat_gateway_id = "${aws_nat_gateway.natgw.id}"  //Attach NAT gateway to route table
+    cidr_block = "0.0.0.0/0"
+  }
   tags = {
     Name = "PrivateRT"}
 }
@@ -116,6 +120,18 @@ resource "aws_security_group_rule" "allow_outbound" {
   type = "egress"
   cidr_blocks = ["0.0.0.0/0"]
 }
+
+//Create a Elastic IP address
+resource "aws_eip" "EIP_address" {
+  vpc = true
+}
+//Create a NAT gateway
+resource "aws_nat_gateway" "natgw" {
+  allocation_id = "${aws_eip.EIP_address.id}"
+  subnet_id = "${aws_subnet.public_subnet.1.id}" //ID of the subnet in which to place the gateway
+}
+
+
 
 
 
