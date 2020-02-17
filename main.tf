@@ -49,3 +49,9 @@ module "db" {
   rds_subnet1 = "${module.vpc.private_subnet1}"
   rds_subnet2 = "${module.vpc.private_subnet2}"
 }
+//This module is for IAM
+module "iam" {
+  source = "./iam"
+  username = ["user1","user2"]
+  EC2_public_key = ".ssh/public_key_Feb2020"  
+}
