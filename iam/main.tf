@@ -22,7 +22,7 @@ resource "aws_iam_policy" "iampolicy" {
     name = "ec2-full-permission"
     policy = "${data.aws_iam_policy_document.iampolicy.json}"
 }
-//Attaching the IAM policy to the recently created users
+//Attach the IAM policy to the recently created users
 resource "aws_iam_user_policy_attachment" "iampolicyattachment" {
     count = "${length(var.username)}"
     user = "${element(aws_iam_user.iamuser.*.name, count.index)}"
@@ -56,7 +56,7 @@ resource "aws_iam_instance_profile" "instance_profile" {
     name = "instance_profile"
     role = "${aws_iam_role.iam_role.name}"
 }
-
+//Define a IAM for S3 policy
 data "aws_iam_policy_document" "S3policy" {
     statement {
         actions = [
@@ -67,7 +67,7 @@ data "aws_iam_policy_document" "S3policy" {
         ]
     }
 }
-//Adding the policy (access to S3) to IAM role 
+//Add the policy (access to S3) to IAM role 
 resource "aws_iam_role_policy" "S3_policy" {
     name = "S3_policy"
     role = "${aws_iam_role.iam_role.id}"
