@@ -12,9 +12,9 @@ data "aws_iam_policy_document" "iampolicy" {
         actions = [
             "ec2:*"
         ]
-    resources = [
-        "*"
-    ]
+        resources = [
+             "*"
+        ]
     } 
 }
 //Define IAM policy of EC2 full permission
@@ -57,22 +57,21 @@ resource "aws_iam_instance_profile" "instance_profile" {
     role = "${aws_iam_role.iam_role.name}"
 }
 
+data "aws_iam_policy_document" "S3policy" {
+    statement {
+        actions = [
+            "s3:*",
+        ]
+        resources = [
+            "*",
+        ]
+    }
+}
 //Adding the policy (access to S3) to IAM role 
 resource "aws_iam_role_policy" "S3_policy" {
     name = "S3_policy"
     role = "${aws_iam_role.iam_role.id}"
-    policy = <<-EOF
-    {
-        "Version": "2012-10-17",
-        "Statement": [
-            {
-                "Action": ["s3:*"],
-                "Effect": "Allow",
-                "Resource": "*"
-            }
-        ]
-    }
-    EOF
+    policy = "${data.aws_iam_policy_document.S3policy.json}"
 }
 //Attach the role to EC2 instance
 /*data "aws_ami" "ubuntu" {
