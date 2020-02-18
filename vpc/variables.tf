@@ -6,3 +6,7 @@ variable "public_cidrs" {
 variable "private_cidrs" {
   type = "list"
 }
+variable "transit_gateway" {
+  
+}
+

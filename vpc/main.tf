@@ -86,7 +86,7 @@ resource "aws_security_group" "Feb2020SG" {
   name = "Feb2020SG"
   vpc_id = "${aws_vpc.main.id}"
 }
-
+//Add inbound rule for SSH
 resource "aws_security_group_rule" "allow-SSH" {
   from_port = 22
   protocol = "tcp"
@@ -95,7 +95,7 @@ resource "aws_security_group_rule" "allow-SSH" {
   type = "ingress"
   cidr_blocks = ["0.0.0.0/0"]
 }
-
+//Add inbound rule for HTTP
 resource "aws_security_group_rule" "allow-HTTP" {
   from_port = 80
   protocol = "tcp"
@@ -104,6 +104,7 @@ resource "aws_security_group_rule" "allow-HTTP" {
   type = "ingress"
   cidr_blocks = ["0.0.0.0/0"]
 }
+//Add inbound rule for HTTPS
 resource "aws_security_group_rule" "allow-HTTPS" {
   from_port = 443
   protocol = "tcp"
@@ -112,6 +113,7 @@ resource "aws_security_group_rule" "allow-HTTPS" {
   type = "ingress"
   cidr_blocks = ["0.0.0.0/0"]
 }
+//Add outbound rule
 resource "aws_security_group_rule" "allow_outbound" {
   from_port = 0
   protocol = "-1"
@@ -131,6 +133,12 @@ resource "aws_nat_gateway" "natgw" {
   subnet_id = "${aws_subnet.public_subnet.1.id}" //ID of the subnet in which to place the gateway
 }
 
+//Create a route in VPC for Transit Gateway module
+resource "aws_route" "tgw_route" {
+    route_table_id = "${aws_route_table.public_route.id}"
+    destination_cidr_block = "0.0.0.0/0"
+    transit_gateway_id = "${var.transit_gateway}"
+}
 
 
 
