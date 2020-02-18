@@ -1,10 +1,13 @@
-/* Transit gateway:  connect thousands of AWS VPC and on-premises infra using a single gateway through Site-to-Site VPN connection. 
-+)Using a Hub and Spoke network tech. 
-+) It can scale up to 5000VPCs; spread the traffics over many VPN connections (speed up to 2.5Gbps)
-+) Max throughput is ideally 50 Gbps
-+) Direct Connection supports Transit Gateway (except China)
-+) Route Table support 10,000 routes. 
-*/
+######################################################################################################
+#Transit gateway:  connect thousands of AWS VPC and on-premises infra using a single gateway         #
+# through Site-to-Site VPN connection.                                                               #
+# +) Using a Hub and Spoke network tech.                                                             #
+# +) It can scale up to 5000VPCs; spread the traffics over many VPN connections (speed up to 2.5Gbps)#
+# +) Max throughput is ideally 50 Gbps                                                               #
+# +) Direct Connection supports Transit Gateway (except China)                                       #
+# +) Route Table support 10,000 routes.                                                              #
+######################################################################################################
+
 provider "aws" {
   region = "ap-southeast-1"
 }

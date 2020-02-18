@@ -1,3 +1,7 @@
+################################################
+#      Identity Access Management (IAM)        #                                       
+################################################
+
 provider "aws" {
     region = "ap-southeast-1"
 }

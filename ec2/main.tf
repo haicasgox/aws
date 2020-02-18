@@ -1,3 +1,7 @@
+################################################
+#      Elastic Compute Cloud (EC2)             #                                       
+################################################
+
 provider "aws" {
   region = "ap-southeast-1"
   //shared_credentials_file = ".awscredentials/accessKeys.csv"

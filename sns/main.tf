@@ -1,3 +1,7 @@
+################################################
+#      Simple Notification Service (SNS)       #                                       
+################################################
+
 provider "aws" {
   region = "ap-southeast-1"
 }

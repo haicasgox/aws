@@ -1,3 +1,7 @@
+################################################
+#      Relational Database Service (RDS)       #                                       
+################################################
+
 provider "aws" {
     region = "ap-southeast-1" 
 }
