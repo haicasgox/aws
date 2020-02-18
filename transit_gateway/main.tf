@@ -5,6 +5,10 @@
 +) Direct Connection supports Transit Gateway (except China)
 +) Route Table support 10,000 routes. 
 */
+provider "aws" {
+  region = "ap-southeast-1"
+}
+
 resource "aws_ec2_transit_gateway" "transit_gateway" {
   description = "transit_gateway"
   auto_accept_shared_attachments = "disable" 
