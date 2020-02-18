@@ -82,3 +82,8 @@ module "transit_gateway" {
   public_subnet1 = "${module.vpc.subnet1}"
   public_subnet2 = "${module.vpc.subnet2}"
 }
+
+############## This module is for KMS ####################
+module "kms" {
+  source = "./kms"
+}
